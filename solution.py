@@ -1,8 +1,18 @@
 import pandas as pd
 import numpy as np
-import scipy.stats as stat
+from scipy.stats import pearsonr
 
 chat_id = 333357078 # Ваш chat ID, не меняйте название переменной
 
+def statistic(x, y):
+    return pearsonr(x, y).statistic
+res = permutation_test((x, y), statistic, vectorized=False,
+                       permutation_type='pairings',
+                       alternative='greater')
+
 def solution(x: np.array, y: np.array) -> bool: # Одна или две выборке на входе, заполняется исходя из условия
-    return stat.ttest_ind(x, y, equal_var=False, alternative='greater')[1] < 0.07
+    res = permutation_test((x, y), statistic, vectorized=False,
+                       permutation_type='pairings',
+                       alternative='greater')
+    p = res.pvalue
+    return p < 0.07
