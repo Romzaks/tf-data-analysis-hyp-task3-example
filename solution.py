@@ -6,9 +6,6 @@ chat_id = 333357078 # Ваш chat ID, не меняйте название пе�
 
 def statistic(x, y):
     return pearsonr(x, y).statistic
-res = permutation_test((x, y), statistic, vectorized=False,
-                       permutation_type='pairings',
-                       alternative='greater')
 
 def solution(x: np.array, y: np.array) -> bool: # Одна или две выборке на входе, заполняется исходя из условия
     res = permutation_test((x, y), statistic, vectorized=False,
