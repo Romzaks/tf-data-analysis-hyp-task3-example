@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from scipy.stats import pearsonr
+from scipy.stats import pearsonr, permutation_test
 
 chat_id = 333357078 # Ваш chat ID, не меняйте название переменной
 
